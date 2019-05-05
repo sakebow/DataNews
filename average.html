@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+	</head>
+
+	<body style="height: 100%; margin: 0">
+		<div id="container" style="height: 100%"></div>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		<script type="text/javascript">
+			var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+			app.title = '正负条形图';
+			
+			option = {
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				legend: {
+					data: ['单位GDP的医院数量']
+				},
+				xAxis: [{
+					type: 'value'
+				}],
+				yAxis: [{
+					type: 'category',
+					axisTick: {
+						show: true
+					},
+					data: ['北京', '天津', '河北', '山西', '内蒙古', '辽宁', '吉林', '黑龙江', '上海', '江苏', '浙江', '安徽', '福建', '江西', '山东', '河南', '湖北', '湖南', '广东', '广西壮族自治区', '海南', '重庆', '四川', '贵州', '云南', '西藏', '陕西', '甘肃', '青海', '宁夏', '新疆']
+				}],
+				series: [{
+					name: '单位GDP的医院数量',
+					type: 'bar',
+					label: {
+						normal: {
+							show: true,
+							position: 'inside'
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: function(params) {
+								// console.log(params); --data is value & dataIndex is index
+								// build a color map as your need.
+								/*var colorList = [
+									'orange', 'orange', 'orange', 'orange', 'orange',
+									'orange', 'orange', 'orange', 'orange', '#87cefa',
+									'#87cefa', 'orange', 'orange', 'orange', '#87cefa',
+									'#87cefa', 'orange', 'orange', 'orange', 'orange',
+									'orange', 'orange', 'orange', 'orange', '#87cefa',
+									'orange', 'orange', 'orange', 'orange', 'orange',
+									'orange'
+								];
+								return colorList[params.dataIndex]*/
+								let color;
+								if (params.data < 0.77) {
+                    				color = 'rgba(86, 139, 250, 1)';
+								} else {
+									color = 'lightblue';
+								}
+								return color;
+							},
+						}
+					},
+					data: [0.99, 0.9, 0.89, 1.9, 0.75, 1.4, 1.3, 1.9, 0.73, 0.41, 0.46, 0.67, 0.67, 1.5, 0.27, 0.49, 0.91, 0.55, 0.67, 1.2, 1, 0.54, 0.86, 1.6, 0.27, 0.67, 1, 1.4, 2.8, 0.8, 0.66],
+					markLine: { //标线
+						symbol: ['none', 'none'], //去掉箭头
+						itemStyle: {
+							normal: {
+								lineStyle: { //全局的样式
+									type: 'solid',
+									width: 5
+								},
+								label: {
+									show: true,
+									position: 'bottom'
+								}
+							}
+						},
+						data: [{
+							xAxis: 0.77,
+							itemStyle: {
+								normal: {
+									color: '#c60c30'
+								}
+							}
+						}]
+					}
+				}]
+			};;
+			if(option && typeof option === "object") {
+				myChart.setOption(option, true);
+			}
+		</script>
+	</body>
+
+</html>

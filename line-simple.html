@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>       
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var data = [
+    [
+        [66, 10430.03, 50, '广东', 1990],
+        [21, 9579.31, 50, '山东', 1990],
+        [24, 9402.36, 50, '河南', 1990],
+        [36, 8041.82, 50, '四川', 1990],
+        [38, 7865.99, 50, '江苏', 1990],
+        [32, 7185.42, 50, '河北', 1990],
+        [20, 5950.1, 50, '安徽', 1990],
+        [20, 6568.37, 50, '湖南', 1990],
+        [36, 5723.77, 50, '湖北', 1990],
+        [26, 5442, 50, '浙江', 1990],
+        [25, 4602.66, 50, '广西', 1990],
+        [5, 4596.6, 50, '云南', 1990],
+        [33, 4456.74, 50, '江西', 1990],
+        [36, 4374.63, 50, '辽宁', 1990],
+        [31, 3831.22, 50, '黑龙江', 1990],
+        [25, 3732.74, 50, '陕西', 1990],
+        [32, 3571.21, 50, '山西', 1990],
+        [24, 3552, 50, '福建', 1990],
+        [23, 3476.55, 50, '贵州', 1990],
+        [11, 2884, 50, '重庆', 1990],
+        [20, 2746.65, 50, '吉林', 1990],
+        [12, 2557.53, 50, '甘肃', 1990],
+        [13, 2470.63, 50, '内蒙', 1990],
+        [24, 2301.39, 50, '上海', 1990],
+        [8, 2181.33, 50, '新疆', 1990],
+        [30, 1961.2, 50, '北京', 1990],
+        [17, 1293.82, 50, '天津', 1990],
+        [5, 867.15, 50, '海南', 1990],
+        [3, 630.14, 50, '宁夏', 1990],
+        [8, 562.67, 50, '青海', 1990],
+        [1, 300.21, 50, '西藏', 1990],
+    ],
+    // [
+    //     [60, -30, 500, 'Australia', 1990]
+    // ]
+];
+var markLineOpt = {
+    // 线条配置
+    animation: true,
+    label: {
+        normal: {
+            formatter: 'y=188.85*x ',
+            textStyle: {
+                align: 'right'
+            }
+        }
+    },
+
+    data: [
+        [{
+                coord: [0, 0],
+                symbol: 'none'
+            }, {
+                coord: [70, 12000],
+                symbol: 'none'
+            },
+            {
+                lineStyle: {
+                    type: 'solid',
+                    color: "#2898FF"
+                },
+                tooltip: {
+                    show: false
+                }
+            }
+        ],
+        //[{
+        //   coord: [-80, -100],
+        //   symbol: 'none'
+        //  }, {
+        //     coord: [100, 80],
+        //     symbol: 'none'
+        //   },
+        // {
+        //   lineStyle: {
+        //     type: 'solid',
+        //      color: "red"
+        //  },
+        //  tooltip: {
+        //     show: false
+        //  }
+        // }
+        //]
+    ]
+};
+
+option = {
+    //背景色
+    backgroundColor: "#FFF",
+    // title: {
+    //     text: '自定义图表'
+    // },
+    // legend: {
+    //     right: 10,
+    //     data: ['1990', '2015']
+    // },
+    xAxis: {
+        name: '医院个数',
+        splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            },
+
+        },
+        splitNumber: 10,
+        gridIndex: 0,
+        axisLabel: {
+            show: true,
+            formatter: '{value}',
+            textStyle: {
+                color: "#B9BBC2"
+            }
+        },
+        min: 0,
+        max: 70,
+        axisLine: {
+            lineStyle: {
+                color: '#B9BBC2'
+            }
+        }
+    },
+    title: {
+        text: '各省人数与三甲医院数量分布图',
+        x: 'center',
+        y: 0
+    },
+    yAxis: {
+        name: '人口(万人)',
+        splitLine: {
+            lineStyle: {
+                type: 'dashed'
+            }
+        },
+        splitNumber: 10,
+        scale: true,
+        gridIndex: 0,
+        axisLabel: {
+            show: true,
+            formatter: '{value} ',
+            textStyle: {
+                color: "#B9BBC2"
+            }
+        },
+        min: 0,
+        max: 12000,
+        axisLine: {
+            lineStyle: {
+                color: '#B9BBC2'
+            }
+        }
+    },
+    tooltip: {
+        trigger: 'item',
+        backgroundColor: "#FFF",
+        textStyle: {
+            color: '#636773'
+        },
+        formatter: function(param) {
+            return (
+                '<p style="display:flex;justify-content:space-between"><span>人口（万人） :</span> ' + '<span>' + param.data[1] + '</span>' + '</p>' +
+                '<p style="display:flex;justify-content:space-between"><span>医院个数 :</span> ' + '<span>' + param.data[0] + '</span>' + '</p>'
+            );
+        },
+        position: function(p) { //其中p为当前鼠标的位置
+            return [p[0] + 20, p[1] - 20];
+        },
+        extraCssText: "box-shadow: 0 0 18px rgba(0,0,0,0.1);width:80px;padding:0px 20px"
+    },
+    series: [{
+        name: '1990',
+        data: data[0],
+        type: 'scatter',
+        markLine: markLineOpt,
+        symbolSize: function(data) {
+            return Math.sqrt(data[2]);
+        },
+        label: {
+            emphasis: {
+                show: true,
+                formatter: function(param) {
+                    return param.data[3];
+                },
+                position: 'top',
+            }
+        },
+        //数据点样式配置
+        itemStyle: {
+            normal: {
+                shadowBlur: 10,
+                shadowColor: 'rgba(47, 84, 235, 0.5)',
+                shadowOffsetY: 5,
+                "label": {
+                    "show": true,
+                    "position": "top",
+                    color: "rgb(47, 84, 235)",
+                    formatter: function(param) {
+                        return param.data[3];
+                    },
+                },
+                color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                    offset: 0,
+                    color: 'rgb(47, 84, 235)'
+                }, {
+                    offset: 1,
+                    color: 'rgb(47, 84, 235)'
+                }])
+            }
+        }
+    }]
+
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

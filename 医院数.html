@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+var data = [
+     {name: '广东', value: 66},
+     {name: '山东', value: 21},
+     {name: '河南', value: 24},
+     {name: '四川', value: 36},
+     {name: '江苏', value: 38},
+     {name: '河北', value: 32},
+     {name: '湖南', value: 20},
+     {name: '安徽', value: 20},
+     {name: '湖北', value: 36},
+     {name: '浙江·', value: 26},
+     {name: '广西', value: 25},
+     {name: '云南', value: 5},
+     {name: '江西', value: 33},
+     {name: '辽宁', value: 36},
+     {name: '黑龙江', value: 31},
+     {name: '陕西', value: 25},
+     {name: '山西', value: 32},
+     {name: '福建', value: 24},
+     {name: '贵州', value: 23},
+     {name: '重庆', value: 11},
+     {name: '吉林', value: 20},
+     {name: '甘肃', value: 12},
+     {name: '内蒙', value: 13},
+     {name: '上海', value: 24},
+     {name: '新疆', value: 8},
+     {name: '北京', value: 30},
+     {name: '天津', value: 17},
+     {name: '海南', value: 5},
+     {name: '宁夏', value: 3},
+     {name: '青海', value: 8},
+     {name: '西藏', value: 1},
+];
+var geoCoordMap = {
+'辽宁':[123.42,41.79],
+'吉林':[125.32,43.88],
+'黑龙江':[126.64,45.75],
+'北京':[116.40,39.90],
+'天津':[117.19,39.12],
+'内蒙':[111.75,40.84],
+'宁夏':[106.23,38.48],
+'山西':[112.54,37.85],
+'河北':[114.50,38.04],
+'山东':[117.00,36.67],
+'河南':[113.66,34.75],
+'陕西':[108.94,34.26],
+'湖北':[114.29,30.58],
+'江苏':[118.76,32.04],
+'安徽':[117.28,31.86],
+'上海':[121.47,31.23],
+'湖南':[112.98,28.19],
+'江西':[115.89,28.67],
+'浙江':[120.15,30.28],
+'福建':[119.30,26.07],
+'广东':[113.28,23.12],
+'海南':[110.19,20.04],
+'广西':[108.32,22.82],
+'重庆':[106.50,29.53],
+'云南':[102.71,25.04],
+'贵州':[106.71,26.57],
+'成都':[104.06,30.65],
+'甘肃':[103.83,36.06],
+'青海':[101.77,36.61],
+'西藏':[91.11,29.64],
+'新疆':[87.61,43.82],
+};
+
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+            res.push({
+               name: data[i].name,
+                value: geoCoord.concat(data[i].value)
+            });
+      }
+    }
+    return res;
+};
+
+
+myChart.setOption(option = {
+    title : {
+        text: '全国三甲医院分布',
+      //  subtext: 'Show Data',
+        left: 'center',
+        top: 'top',
+        textStyle: {
+            color: '#000'
+        },
+        show: false
+    },
+  tooltip: {
+            formatter : function(e){
+                if (typeof(e.value)[2] == "undefined") {
+                    return e.name;
+                }else{
+                    return '医院数<br>'+e.name + ':' + e.value[2] + '家';
+                }
+               
+            }
+        },
+    legend: {
+        left: 'left',
+        data: ['强', '中', '弱'],
+        textStyle: {
+            color: '#000'
+        }
+    },
+    /*backgroundColor: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 1,
+        y2: 1,
+        colorStops: [{
+            offset: 0, color: '#0f2c70' // 0% 处的颜色
+        }, {
+            offset: 1, color: '#091732' // 100% 处的颜色
+        }],
+        globalCoord: false // 缺省为 false
+    },*/
+    geo: {
+        map: 'china',
+        show: true,
+        roam: true,
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        itemStyle: {
+            normal: {
+                areaColor: '#091632',
+                borderColor: '#1773c3',
+                shadowColor: '#1773c3',
+                shadowBlur: 20
+            }
+        }
+    },
+    series: [
+        {
+            type: 'map',
+            map: 'china',
+            geoIndex: 1,
+            aspectScale: 0.75, // 长宽比
+            showLegendSymbol: true, // 存在legend时显示
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            roam: true,
+            itemStyle: {
+                normal: {
+                    areaColor: 'lightblue',
+                    borderColor: '#3B5077',
+                    borderWidth: 1
+                },
+                emphasis: {
+                    areaColor: 'orange'
+                }
+            },
+        },
+        {
+            type: 'scatter',
+            coordinateSystem: 'geo',
+            data: convertData(data),
+            symbolSize: function (val) {
+                return val[2] / 2;
+            },
+            label: {
+                normal: {
+                   formatter:'{b}' ,
+                    position: 'right',
+                    show: false
+                },
+                emphasis: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgba(86, 139, 250, 0.75)'
+                }
+            }
+        },
+        {
+            name: '前6',
+            type: 'effectScatter',
+            coordinateSystem: 'geo',
+            data: convertData(data.sort(function (a, b) {
+                return b.value - a.value;
+            }).slice(0, 7)),
+            symbolSize: function (val) {
+                return val[2] / 2.5;
+            },
+            showEffectOn: 'render',
+            rippleEffect: {
+                brushType: 'stroke'
+            },
+            hoverAnimation: true,
+            label: {
+                normal: {
+                    formatter: '{b}',
+                    position: 'right',
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    color: 'rgba(86, 139, 250, 0.85)',
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            zlevel: 1
+        }
+    ]
+});;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

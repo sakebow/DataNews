@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+	<head>
+		<meta charset="utf-8">
+	</head>
+
+	<body style="height: 100%; margin: 0">
+		<div id="container" style="height: 100%"></div>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		<script type="text/javascript">
+			var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+
+			option = {
+				title: {
+					text: '医学院分布'
+				},
+				xAxis: {
+					data: ['西藏', '四川', '安徽', '江西', '湖南', '辽宁', '河南', '甘肃', '广西', '山西', '广东', '黑龙江', '福建', '云南', '河北', '湖北', '贵州', '陕西', '内蒙古', '山东', '浙江', '新疆', '江苏', '海南', '吉林', '北京', '重庆', '上海', '宁夏', '天津', '青海', '      ']
+				},
+				yAxis: {},
+				series: [{
+					type: 'line',
+					// data: [220, 182, 191, 234, 290, 330, 310, 220, 182, 191, 234, 290, 330, 310, 220, 182, 191, 234, 290, 330, 310]
+				}]
+			};
+			app.title = '堆叠条形图';
+
+			option = {
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: { // 坐标轴指示器，坐标轴触发有效
+						type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				legend: {
+					data: ['不在医学院所在城市', '在医学院所在城市', '附属医院', ]
+				},
+				grid: {
+					left: '4%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'value'
+				},
+				yAxis: {
+					type: 'category',
+					data: ['西藏', '四川', '安徽', '江西', '湖南', '辽宁', '河南', '甘肃', '广西', '山西', '广东', '黑龙江', '福建', '云南', '河北', '湖北', '贵州', '陕西', '内蒙古', '山东', '浙江', '新疆', '江苏', '海南', '吉林', '北京', '重庆', '上海', '宁夏', '天津', '青海']
+				},
+				series: [{
+						name: '不在医学院所在城市',
+						type: 'bar',
+						stack: '总量',
+						label: {
+							normal: {
+								show: false,
+								position: 'insideRight'
+							},
+							emphasis: {
+								show: true,
+								position: 'insideRight'
+							}
+						},
+						animationDelay: function(idx) {
+							return idx * 10;
+						},
+						zlevel: 3,
+						data: [1, 0.66, 0.6, 0.53, 0.5, 0.5, 0.5, 0.5, 0.48, 0.47, 0.44, 0.42, 0.42, 0.4, 0.4, 0.36, 0.35, 0.32, 0.3, 0.28, 0.27, 0.25, 0.21, 0.2, 0.15, 0, 0, 0, 0, 0, 0]
+					},
+					{
+						name: '在医学院所在城市',
+						type: 'bar',
+						stack: '总量',
+						label: {
+							normal: {
+								show: false,
+								position: 'insideRight'
+							},
+							emphasis: {
+								show: true,
+								position: 'insideRight'
+							}
+						},
+						animationDelay: function(idx) {
+							return idx * 10 + 3000;
+						},
+						zlevel: 2,
+						data: [0, 0.14, 0.25, 0.31, 0.2, 0.2, 0.3, 0.33, 0.36, 0.4, 0.33, 0.25, 0.3, 0.2, 0.35, 0.44, 0.35, 0.6, 0.3, 0.57, 0.42, 0.25, 0.6, 0.6, 0.45, 0.2, 0.54, 0.55, 0.67, 0.76, 0.87]
+					},
+					{
+						name: '附属医院',
+						type: 'bar',
+						stack: '总量',
+						label: {
+							normal: {
+								show: false,
+								position: 'insideRight'
+							},
+							emphasis: {
+								show: true,
+								position: 'insideRight'
+							}
+						},
+						animationDelay: function(idx) {
+							return idx * 10 + 6000;
+						},
+						zlevel: 1,
+						data: [0, 0.2, 0.15, 0.16, 0.3, 0.3, 0.2, 0.17, 0.16, 0.13, 0.23, 0.33, 0.28, 0.4, 0.25, 0.2, 0.3, 0.08, 0.4, 0.15, 0.31, 0.5, 0.19, 0.2, 0.4, 0.8, 0.46, 0.45, 0.33, 0.24, 0.13, ]
+					},
+				]
+			};
+			if(option && typeof option === "object") {
+				myChart.setOption(option, true);
+			}
+		</script>
+	</body>
+
+</html>

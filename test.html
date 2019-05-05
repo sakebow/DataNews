@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+	</head>
+
+	<body>
+		<div id="main" style="width: 100%; height: 500px;"></div>
+	</body>
+	<script type="text/javascript">
+		var mapData = [{
+				name: '北京',
+				value: [{
+					name: '医院数量',
+					value: 30
+				}, {
+					name: 'GDP',
+					value: 10920.09
+				}]
+			},
+			{
+				name: '天津',
+				value: [{
+					name: '医院数量',
+					value: 17
+				}, {
+					name: 'GDP',
+					value: 7677
+				}]
+			},
+			{
+				name: '上海',
+				value: [{
+					name: '医院数量',
+					value: 24
+				}, {
+					name: 'GDP',
+					value: 14973.51
+				}]
+			},
+			{
+				name: '重庆',
+				value: [{
+					name: '医院数量',
+					value: 11
+				}, {
+					name: 'GDP',
+					value: 16531.34
+				}]
+			},
+			{
+				name: '河北',
+				value: [{
+					name: '医院数量',
+					value: 32
+				}, {
+					name: 'GDP',
+					value: 36980.22
+				}]
+			},
+			{
+				name: '河南',
+				value: [{
+					name: '医院数量',
+					value: 24
+				}, {
+					name: 'GDP',
+					value: 72678.18
+				}]
+			},
+			{
+				name: '云南',
+				value: [{
+					name: '医院数量',
+					value: 5
+				}, {
+					name: 'GDP',
+					value: 28000.35
+				}]
+			},
+			{
+				name: '辽宁',
+				value: [{
+					name: '医院数量',
+					value: 36
+				}, {
+					name: 'GDP',
+					value: 23942
+				}]
+			},
+			{
+				name: '湖南',
+				value: [{
+					name: '医院数量',
+					value: 20
+				}, {
+					name: 'GDP',
+					value: 36522.95
+				}]
+			},
+			{
+				name: '安徽',
+				value: [{
+					name: '医院数量',
+					value: 20
+				}, {
+					name: 'GDP',
+					value: 35964
+				}]
+			},
+			{
+				name: '山东',
+				value: [{
+					name: '医院数量',
+					value: 21
+				}, {
+					name: 'GDP',
+					value: 85900.94
+				}]
+			},
+			{
+				name: '新疆',
+				value: [{
+					name: '医院数量',
+					value: 8
+				}, {
+					name: 'GDP',
+					value: 13540.83
+				}]
+			},
+			{
+				name: '江苏',
+				value: [{
+					name: '医院数量',
+					value: 38
+				}, {
+					name: 'GDP',
+					value: 44988.16
+				}]
+			},
+			{
+				name: '浙江',
+				value: [{
+					name: '医院数量',
+					value: 26
+				}, {
+					name: 'GDP',
+					value: 32298.28
+				}]
+			},
+			{
+				name: '江西',
+				value: [{
+					name: '医院数量',
+					value: 33
+				}, {
+					name: 'GDP',
+					value: 27518.67
+				}]
+			},
+			{
+				name: '湖北',
+				value: [{
+					name: '医院数量',
+					value: 36
+				}, {
+					name: 'GDP',
+					value: 34590.56
+				}]
+			},
+			{
+				name: '广西',
+				value: [{
+					name: '医院数量',
+					value: 25
+				}, {
+					name: 'GDP',
+					value: 30133.86
+				}]
+			},
+			{
+				name: '甘肃',
+				value: [{
+					name: '医院数量',
+					value: 12
+				}, {
+					name: 'GDP',
+					value: 16103.17
+				}]
+			},
+			{
+				name: '山西',
+				value: [{
+					name: '医院数量',
+					value: 32
+				}, {
+					name: 'GDP',
+					value: 20396.25
+				}]
+			},
+			{
+				name: '内蒙古',
+				value: [{
+					name: '医院数量',
+					value: 13
+				}, {
+					name: 'GDP',
+					value: 15288.94
+				}]
+			},
+			{
+				name: '陕西',
+				value: [{
+					name: '医院数量',
+					value: 25
+				}, {
+					name: 'GDP',
+					value: 20818.5
+				}]
+			},
+			{
+				name: '吉林',
+				value: [{
+					name: '医院数量',
+					value: 20
+				}, {
+					name: 'GDP',
+					value: 16199.88
+				}]
+			},
+			{
+				name: '福建',
+				value: [{
+					name: '医院数量',
+					value: 24
+				}, {
+					name: 'GDP',
+					value: 19500.27
+				}]
+			},
+			{
+				name: '贵州',
+				value: [{
+					name: '医院数量',
+					value: 23
+				}, {
+					name: 'GDP',
+					value: 18595.38
+				}]
+			},
+			{
+				name: '广东',
+				value: [{
+					name: '医院数量',
+					value: 66
+				}, {
+					name: 'GDP',
+					value: 89879.23
+				}]
+			},
+			{
+				name: '青海',
+				value: [{
+					name: '医院数量',
+					value: 8
+				}, {
+					name: 'GDP',
+					value: 2642.8
+				}]
+			},
+			{
+				name: '西藏',
+				value: [{
+					name: '医院数量',
+					value: 1
+				}, {
+					name: 'GDP',
+					value: 1310.63
+				}]
+			},
+			{
+				name: '四川',
+				value: [{
+					name: '医院数量',
+					value: 36
+				}, {
+					name: 'GDP',
+					value: 51768.26
+				}]
+			},
+			{
+				name: '宁夏',
+				value: [{
+					name: '医院数量',
+					value: 3
+				}, {
+					name: 'GDP',
+					value: 3453.93
+				}]
+			},
+			{
+				name: '黑龙江',
+				value: [{
+					name: '医院数量',
+					value: 31
+				}, {
+					name: 'GDP',
+					value: 21898.81
+				}]
+			},
+			{
+				name: '海南',
+				value: [{
+					name: '医院数量',
+					value: 5
+				}, {
+					name: 'GDP',
+					value: 4462.54
+				}]
+			}
+		];
+		var data = [{
+				name: '广东',
+				value: 66
+			},
+			{
+				name: '山东',
+				value: 21
+			},
+			{
+				name: '河南',
+				value: 24
+			},
+			{
+				name: '四川',
+				value: 36
+			},
+			{
+				name: '江苏',
+				value: 38
+			},
+			{
+				name: '河北',
+				value: 32
+			},
+			{
+				name: '湖南',
+				value: 20
+			},
+			{
+				name: '安徽',
+				value: 20
+			},
+			{
+				name: '湖北',
+				value: 36
+			},
+			{
+				name: '浙江·',
+				value: 26
+			},
+			{
+				name: '广西',
+				value: 25
+			},
+			{
+				name: '云南',
+				value: 5
+			},
+			{
+				name: '江西',
+				value: 33
+			},
+			{
+				name: '辽宁',
+				value: 36
+			},
+			{
+				name: '黑龙江',
+				value: 31
+			},
+			{
+				name: '陕西',
+				value: 25
+			},
+			{
+				name: '山西',
+				value: 32
+			},
+			{
+				name: '福建',
+				value: 24
+			},
+			{
+				name: '贵州',
+				value: 23
+			},
+			{
+				name: '重庆',
+				value: 11
+			},
+			{
+				name: '吉林',
+				value: 20
+			},
+			{
+				name: '甘肃',
+				value: 12
+			},
+			{
+				name: '内蒙',
+				value: 13
+			},
+			{
+				name: '上海',
+				value: 24
+			},
+			{
+				name: '新疆',
+				value: 8
+			},
+			{
+				name: '北京',
+				value: 30
+			},
+			{
+				name: '天津',
+				value: 17
+			},
+			{
+				name: '海南',
+				value: 5
+			},
+			{
+				name: '宁夏',
+				value: 3
+			},
+			{
+				name: '青海',
+				value: 8
+			},
+			{
+				name: '西藏',
+				value: 1
+			},
+		];
+		var geoCoordMap = {
+			'辽宁': [123.42, 41.79],
+			'吉林': [125.32, 43.88],
+			'黑龙江': [126.64, 45.75],
+			'北京': [116.40, 39.90],
+			'天津': [117.19, 39.12],
+			'内蒙': [111.75, 40.84],
+			'宁夏': [106.23, 38.48],
+			'山西': [112.54, 37.85],
+			'河北': [114.50, 38.04],
+			'山东': [117.00, 36.67],
+			'河南': [113.66, 34.75],
+			'陕西': [108.94, 34.26],
+			'湖北': [114.29, 30.58],
+			'江苏': [118.76, 32.04],
+			'安徽': [117.28, 31.86],
+			'上海': [121.47, 31.23],
+			'湖南': [112.98, 28.19],
+			'江西': [115.89, 28.67],
+			'浙江': [120.15, 30.28],
+			'福建': [119.30, 26.07],
+			'广东': [113.28, 23.12],
+			'海南': [110.19, 20.04],
+			'广西': [108.32, 22.82],
+			'重庆': [106.50, 29.53],
+			'云南': [102.71, 25.04],
+			'贵州': [106.71, 26.57],
+			'成都': [104.06, 30.65],
+			'甘肃': [103.83, 36.06],
+			'青海': [101.77, 36.61],
+			'西藏': [91.11, 29.64],
+			'新疆': [87.61, 43.82],
+		};
+
+		var convertData = function(data) {
+			var res = [];
+			for(var i = 0; i < data.length; i++) {
+				var geoCoord = geoCoordMap[data[i].name];
+				if(geoCoord) {
+					res.push({
+						name: data[i].name,
+						value: geoCoord.concat(data[i].value)
+					});
+				}
+			}
+			return res;
+		};
+
+		var myChart = echarts.init(document.getElementById('main'));
+		var option = {
+			title: {
+				text: '全国三甲医院分布',
+				left: 'center',
+				top: 'top',
+				textStyle: {
+					color: '#000'
+				},
+				show: false
+			},
+			tooltip: {
+				trigger: 'item',
+				formatter: function(data) {
+					// get current city
+					let cityName = data.name;
+					let res = cityName; // store value to return to another function
+					// traverse mapData to match names of cities
+					let length = mapData.length;
+					for(let i = 0; i < length; i++) {
+						if(mapData[i].name == cityName) { // get it
+							res += "<br />" + mapData[i].value[0].name + ": " + mapData[i].value[0].value + "<br />" + mapData[i].value[1].name + ": " + mapData[i].value[1].value;
+						}
+					}
+					return res;
+				}
+			},
+			legend: {
+				left: 'left',
+				data: ['强', '中', '弱'],
+				textStyle: {
+					color: '#ccc'
+				}
+			},
+			/*backgroundColor: {
+				type: 'linear',
+				x: 0,
+				y: 0,
+				x2: 1,
+				y2: 1,
+				colorStops: [{
+					offset: 0,
+					color: '#000000' // 0% 处的颜色
+				}, {
+					offset: 1,
+					color: '#ffffff' // 100% 处的颜色
+				}],
+				globalCoord: false // 缺省为 false
+			},*/ // 背景颜色，这里是专门用于渐变色的设置
+			visualMap: [{
+				min: 0,
+				max: 100000,
+				left: 'left',
+				top: 'bottom',
+				text: ['高', '低'], // 文本，默认为数值文本
+				calculable: true,
+				inRange: {
+					color: ['lightblue', 'rgba(86, 139, 250, 0.75)']
+				},
+				seriesIndex: 0
+			}/*, {
+				min: 0,
+				max: 80,
+				left: 'right',
+				top: 'bottom',
+				text: ['高', '低'], // 文本，默认为数值文本
+				calculable: true,
+				inRange: {
+					color: ['yellow',  'red']
+				},
+				seriesIndex: 3,
+			}*/],
+			geo: {
+				map: 'china',
+				show: true,
+				roam: true,
+				label: {
+					emphasis: {
+						show: false
+					}
+				},
+				itemStyle: {
+					normal: {
+						shadowColor: '#87cefa',
+						shadowBlur: 20
+					}
+				}
+			},
+			series: [{
+					name: 'GDP',
+					type: 'map',
+					mapType: 'china',
+					roam: false,
+					label: {
+						normal: {
+							show: false
+						},
+						emphasis: {
+							show: true
+						}
+					},
+					data: [{
+							name: '北京',
+							value: 10920.09
+						},
+						{
+							name: '天津',
+							value: 7677
+						},
+						{
+							name: '上海',
+							value: 14973.51
+						},
+						{
+							name: '重庆',
+							value: 16531.34
+						},
+						{
+							name: '河北',
+							value: 36980.22
+						},
+						{
+							name: '河南',
+							value: 72678.18
+						},
+						{
+							name: '云南',
+							value: 28000.35
+						},
+						{
+							name: '辽宁',
+							value: 23942
+						},
+						{
+							name: '湖南',
+							value: 36522.95
+						},
+						{
+							name: '安徽',
+							value: 35964
+						},
+						{
+							name: '山东',
+							value: 85900.94
+						},
+						{
+							name: '新疆',
+							value: 13540.83
+						},
+						{
+							name: '江苏',
+							value: 44988.16
+						},
+						{
+							name: '浙江',
+							value: 32298.28
+						},
+						{
+							name: '江西',
+							value: 27518.67
+						},
+						{
+							name: '湖北',
+							value: 34590.56
+						},
+						{
+							name: '广西',
+							value: 30133.86
+						},
+						{
+							name: '甘肃',
+							value: 16103.17
+						},
+						{
+							name: '山西',
+							value: 20396.25
+						},
+						{
+							name: '内蒙古',
+							value: 15288.94
+						},
+						{
+							name: '陕西',
+							value: 20818.5
+						},
+						{
+							name: '吉林',
+							value: 16199.88
+						},
+						{
+							name: '福建',
+							value: 19500.27
+						},
+						{
+							name: '贵州',
+							value: 18595.38
+						},
+						{
+							name: '广东',
+							value: 89879.23
+						},
+						{
+							name: '青海',
+							value: 2642.8
+						},
+						{
+							name: '西藏',
+							value: 1310.63
+						},
+						{
+							name: '四川',
+							value: 51768.26
+						},
+						{
+							name: '宁夏',
+							value: 3453.93
+						},
+						{
+							name: '黑龙江',
+							value: 21898.81
+						},
+						{
+							name: '海南',
+							value: 4462.54
+						},
+					]
+				}, {
+					type: 'map',
+					map: 'china',
+					geoIndex: 1,
+					aspectScale: 0.75, // 长宽比
+					showLegendSymbol: true, // 存在legend时显示
+					label: {
+						normal: {
+							show: false,
+						},
+						emphasis: {
+							show: false
+						}
+					},
+					roam: true,
+					itemStyle: {
+						normal: {
+							borderWidth: 1
+						},
+						emphasis: {
+							areaColor: '#white'
+						}
+					},
+				},
+				{
+					type: 'scatter',
+					coordinateSystem: 'geo',
+					data: convertData(data),
+					symbolSize: function(val) {
+						return val[2] / 2.5;
+					},
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'right',
+							show: false,
+							// 这里是圆点旁边的字得颜色，其中show为false表示不显示
+						},
+						emphasis: {
+							show: true
+						},
+					},
+					itemStyle: {
+						normal: {
+							color: 'white'
+						},
+						emphasis: {
+						}
+					}
+				}, {
+					name: '前6',
+					type: 'effectScatter',
+					coordinateSystem: 'geo',
+					data: convertData(data.sort(function(a, b) {
+						return b.value - a.value;
+					}).slice(0, 7)),
+					symbolSize: function(val) {
+						return val[2] / 3;
+					},
+					showEffectOn: 'render',
+					rippleEffect: {
+						brushType: 'stroke'
+					},
+					hoverAnimation: true,
+					label: {
+						normal: {
+							formatter: '{b}',
+							position: 'top',
+							show: true,
+							color: 'black'
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: 'white'
+						},
+						emphasis: {
+						}
+					},
+					zlevel: 1
+				}
+			]
+		};
+		myChart.setOption(option);
+	</script>
+
+</html>
