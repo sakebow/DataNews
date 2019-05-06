@@ -4,8 +4,7 @@
        <meta charset="utf-8">
    </head>
    <body style="height: 100%; margin: 0">
-       <div id="container" style="height: 100%"></div>
-		<script type="text/javascript" src="js/jquery-3.1.1.min.js" ></script>
+       <div id="container" style="height: 100%"></div>       
 		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
        <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
        <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
@@ -81,7 +80,7 @@ var markLineOpt = {
             {
                 lineStyle: {
                     type: 'solid',
-                    color: "#2898FF"
+                    color: "lightblue"
                 },
                 tooltip: {
                     show: false
@@ -216,7 +215,7 @@ option = {
                 "label": {
                     "show": true,
                     "position": "top",
-                    color: "rgb(47, 84, 235)",
+                    color: "rgba(86, 139, 250, 0.75)",
                     formatter: function(param) {
                         return param.data[3];
                     },
