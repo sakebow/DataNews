@@ -3,7 +3,7 @@
 .doc {
 	margin: 0 auto;
 	min-width: 320px;
-	text-indent: 2em;
+	text-indent: 2.7em;
 }
 
 
@@ -315,18 +315,16 @@
 		padding: 0.75% 1.5%;
 	}
 	.doc-float-title {
-		width: 70%;
-		top: 125px;
-		left: 15.5%;
-		height: 220px;
-		width: 700px;
-		padding: 4% 0;
-		font-size: 160%;
+		width: 100%;
+		top: 300px;
+		left: 0;
+		height: 320px;
+		font-size: 250%;
 	}
 	.doc-title-second {
-		padding-top: 7%;
-		padding-left: 13%;
-		font-size: 80%;
+		padding-top: 1%;
+		padding-left: 1%;
+		font-size: 85%;
 		justify-content: center;
 		-webkit-justify-content: center;
 	}
