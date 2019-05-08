@@ -7,15 +7,15 @@
 
 	<body style="height: 100%; margin: 0">
 		<div id="container" style="height: 100%"></div>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
 <!--		<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
 		<script type="text/javascript">
 			var dom = document.getElementById("container");
 			var myChart = echarts.init(dom);
@@ -28,19 +28,20 @@
 				'贵州', '山西', '吉林', '内蒙古', '黑龙江', '云南',
 				'新疆', '甘肃', '天津', '青海', '宁夏', '海南', '西藏'
 			];
-			var hospitalNum = [0, 1, 2, 3, 4, 5, 6];
+			var hospitalNum = [0, 1, 2, 3, 4, 5, 6, 7];
 
 			var data = [
-				[4, 0, 15, '广州市', ['中山大学中山医学院', '南方医科大学', '广州医科大学', '华南理工大学医学院', '暨南大学医学院']],
+				[7, 0, 15, '广州市', ['中山大学中山医学院', '南方医科大学', '广州医科大学', '华南理工大学医学院', '暨南大学医学院']],
 				[1, 0, 7, '汕头市', ['汕头大学医学院']],
 				[2, 0, 7, '深圳市', ['深圳大学医学部']],
 				[3, 0, 7, '东莞市', ['广东医科大学']],
-				[6, 1, 15, '南京市', ['南京医科大学', '南京大学医学院', '东南大学医学院']],
+				[7, 1, 15, '南京市', ['南京医科大学', '南京大学医学院', '东南大学医学院']],
 				[1, 1, 7, '苏州市', ['苏州大学医学部']],
 				[2, 1, 7, '徐州市', ['徐州医科大学']],
 				[4, 1, 7, '南通市', ['南通大学医学院']],
 				[3, 1, 7, '镇江市', ['江苏大学医学院']],
 				[5, 1, 7, '无锡市', ['江南大学无锡医学院']],
+				[6, 1, 7, '扬州市', ['扬州大学医学院']],
 				[1, 2, 7, '济南市', ['山东大学齐鲁医学部']],
 				[2, 2, 7, '青岛市', ['青岛大学医学院']],
 				[3, 2, 7, '滨州市', ['滨州医学院']],
@@ -54,18 +55,18 @@
 				[2, 4, 7, '开封市', ['河南大学医学院']],
 				[3, 4, 7, '新乡市', ['新乡医学院']],
 				[4, 4, 7, '洛阳市', ['河南科技大学医学院']],
-				[3, 5, 15, '成都市', ['四川大学华西医学院', '西南交通大学医学院', '成都医学院']],
+				[7, 5, 15, '成都市', ['四川大学华西医学院', '西南交通大学医学院', '成都医学院']],
 				[2, 5, 7, '泸州市', ['西南医科大学']],
 				[1, 5, 7, '南充市', ['川北医学院']],
 				[1, 6, 7, '十堰市', ['湖北医药学院']],
 				[2, 6, 7, '宜昌市', ['三峡大学医学院']],
-				[3, 6, 7, '武汉市', ['华中科技大学同济医学院', '武汉大学医学部', '武汉科技大学医学院']],
-				[1, 7, 15, '北京市', ['北京协和医学院', '北京大学医学部', '首都医科大学', '解放军医学院', '清华大学医学部']],
-				[1, 8, 15, '上海市', ['上海交通大学医学院', '复旦大学上海医学院', '第二军医大学', '同济大学']],
+				[7, 6, 15, '武汉市', ['华中科技大学同济医学院', '武汉大学医学部', '武汉科技大学医学院']],
+				[7, 7, 15, '北京市', ['北京协和医学院', '北京大学医学部', '首都医科大学', '解放军医学院', '清华大学医学部']],
+				[7, 8, 15, '上海市', ['上海交通大学医学院', '复旦大学上海医学院', '第二军医大学', '同济大学']],
 				[1, 9, 7, '福州市', ['福建医科大学']],
 				[2, 9, 7, '厦门市', ['厦门大学医学院']],
 				[1, 10, 7, '衡阳市', ['南华大学医学院']],
-				[2, 10, 15, '长沙市', ['中南大学湘雅医学院', '湖南师范大学医学院']],				
+				[7, 10, 15, '长沙市', ['中南大学湘雅医学院', '湖南师范大学医学院']],				
 				[1, 11, 7, '石家庄市', ['河北医科大学']],
 				[2, 11, 7, '承德市', ['承德医学院']],
 				[3, 11, 7, '唐山市', ['华北理工大学医学院']],
@@ -77,13 +78,13 @@
 				[1, 13, 7, '沈阳市', ['中国医科大学']],
 				[2, 13, 7, '锦州市', ['锦州医科大学']],
 				[3, 13, 7, '沈阳市', ['沈阳医学院']],
-				[4, 13, 15, '大连市', ['大连医科大学', '大连大学医学院']],
+				[7, 13, 15, '大连市', ['大连医科大学', '大连大学医学院']],
 				[1, 14, 7, '延安市', ['延安大学']],
-				[2, 14, 15, '西安市', ['第四军医大学', '西安交通大学医学部', '西安医学院']],
+				[7, 14, 15, '西安市', ['第四军医大学', '西安交通大学医学部', '西安医学院']],
 				[1, 15, 7, '南昌市', ['南昌大学江西医学院']],
 				[1, 16, 7, '南宁市', ['广西医科大学']],
 				[2, 16, 7, '桂林市', ['桂林医学院']],
-				[1, 17, 15, '重庆市', ['第三军医大学', '重庆医科大学']],
+				[7, 17, 15, '重庆市', ['第三军医大学', '重庆医科大学']],
 				[1, 18, 7, '贵阳市', ['贵州医科大学']],
 				[2, 18, 7, '遵义市', ['遵义医学院']],
 				[1, 19, 7, '太原市', ['山西医科大学']],
@@ -98,7 +99,7 @@
 				[2, 24, 7, '昆明市', ['昆明理工大学医学院', '昆明医科大学']],
 				[1, 24, 7, '大理市', ['大理大学医学院']],
 				[1, 25, 7, '兰州市', ['兰州大学医学院']],
-				[1, 26, 15, '天津市', ['天津医科大学', '南开大学医学院']],
+				[7, 26, 15, '天津市', ['天津医科大学', '南开大学医学院']],
 				[1, 27, 7, '西宁市', ['青海大学医学院']],
 				[1, 28, 7, '银川市', ['宁夏医科大学']],
 				[1, 29, 7, '海口市', ['海南医学院']],
@@ -164,6 +165,14 @@
 					data: data,
 					animationDelay: function(idx) {
 						return idx * 5;
+					},
+					color: function(item) {
+						// console.log(item.data[1]);
+						if (item.data[1] == 0 || item.data[1] == 1 || item.data[1] == 2 || item.data[1] == 6) {
+							return 'rgba(26, 111, 138, 1)'
+						} else {
+							return 'lightblue'
+						}
 					}
 				}]
 			};

@@ -32,6 +32,8 @@
 	-webkit-align-items: center;
 	position: absolute;
 	color: white;
+	background-color: rgba(172, 216, 230, 0.75);
+	font-family: "宋体";
 }
 
 .doc-title-second {
@@ -61,7 +63,8 @@
 .doc-title-article {
 	width: 100%;
 	text-align: center;
-	font-family: "方正超粗黑简体";
+	font-family: "常规方正小标体";
+	font-weight: bold;
 	text-indent: 0;
 }
 
@@ -273,6 +276,7 @@
 	/* 大标题 */
 	.doc-title-article {
 		font-size: 3em;
+		padding-top: 3%;
 	}
 	.doc-title-author {
 		font-size: 1.25em;
@@ -312,12 +316,18 @@
 	}
 	.doc-float-title {
 		width: 70%;
-		top: 375px;
-		left: 10%;
+		top: 125px;
+		left: 15.5%;
+		height: 220px;
+		width: 700px;
+		padding: 4% 0;
+		font-size: 160%;
 	}
 	.doc-title-second {
-		padding: 4% 0;
-		justify-content: flex-end;
-		-webkit-justify-content: flex-end;
+		padding-top: 7%;
+		padding-left: 13%;
+		font-size: 80%;
+		justify-content: center;
+		-webkit-justify-content: center;
 	}
 }

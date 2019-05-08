@@ -50,7 +50,7 @@ var data = [
      {name: '海南', value: 5},
      {name: '宁夏', value: 3},
      {name: '青海', value: 8},
-     {name: '西藏', value: 1},
+     {name: '西藏（1家）', value: 1},
 ];
 var geoCoordMap = {
 '辽宁':[123.42,41.79],
@@ -82,7 +82,7 @@ var geoCoordMap = {
 '成都':[104.06,30.65],
 '甘肃':[103.83,36.06],
 '青海':[101.77,36.61],
-'西藏':[91.11,29.64],
+'西藏（1家）':[91.11,29.64],
 '新疆':[87.61,43.82],
 };
 
@@ -149,11 +149,12 @@ myChart.setOption(option = {
         label: {
             emphasis: {
                 show: false
-            }
+            },
+            position: "top"
         },
         itemStyle: {
             normal: {
-                areaColor: '#091632',
+                areaColor: '#fff',
                 borderColor: '#1773c3',
                 shadowColor: '#1773c3',
                 shadowBlur: 20
@@ -169,7 +170,7 @@ myChart.setOption(option = {
             showLegendSymbol: true, // 存在legend时显示
             label: {
                 normal: {
-                    show: true,
+                    show: false,
                     textStyle: {
                         color: '#fff'
                     }
@@ -189,7 +190,7 @@ myChart.setOption(option = {
                     borderWidth: 1
                 },
                 emphasis: {
-                    areaColor: 'orange'
+                    areaColor: 'rgba(80, 192, 100, 0.75)'
                 }
             },
         },
@@ -203,7 +204,7 @@ myChart.setOption(option = {
             label: {
                 normal: {
                    formatter:'{b}' ,
-                    position: 'right',
+                    position: 'top',
                     show: false
                 },
                 emphasis: {
@@ -212,7 +213,7 @@ myChart.setOption(option = {
             },
             itemStyle: {
                 normal: {
-                    color: 'rgba(86, 139, 250, 0.75)'
+                    color: 'rgba(86, 139, 250, 0.85)'
                 }
             }
         },

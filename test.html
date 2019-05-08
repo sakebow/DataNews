@@ -6,14 +6,14 @@
 		<title></title>
 		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
 	</head>
 
 	<body>
@@ -554,28 +554,30 @@
 				globalCoord: false // 缺省为 false
 			},*/ // 背景颜色，这里是专门用于渐变色的设置
 			visualMap: [{
-				min: 0,
-				max: 100000,
-				left: 'left',
-				top: 'bottom',
-				text: ['高', '低'], // 文本，默认为数值文本
-				calculable: true,
-				inRange: {
-					color: ['lightblue', 'rgba(86, 139, 250, 0.75)']
-				},
-				seriesIndex: 0
-			}/*, {
-				min: 0,
-				max: 80,
-				left: 'right',
-				top: 'bottom',
-				text: ['高', '低'], // 文本，默认为数值文本
-				calculable: true,
-				inRange: {
-					color: ['yellow',  'red']
-				},
-				seriesIndex: 3,
-			}*/],
+					min: 0,
+					max: 100000,
+					left: 'left',
+					top: 'bottom',
+					text: ['高', '低'], // 文本，默认为数值文本
+					calculable: true,
+					inRange: {
+						color: ['lightblue', 'rgba(4, 52, 151, 1)']
+					},
+					seriesIndex: 0
+				}
+				/*, {
+								min: 0,
+								max: 80,
+								left: 'right',
+								top: 'bottom',
+								text: ['高', '低'], // 文本，默认为数值文本
+								calculable: true,
+								inRange: {
+									color: ['yellow',  'red']
+								},
+								seriesIndex: 3,
+							}*/
+			],
 			geo: {
 				map: 'china',
 				show: true,
@@ -583,11 +585,14 @@
 				label: {
 					emphasis: {
 						show: false
-					}
+					},
+					position: "top"
 				},
 				itemStyle: {
 					normal: {
-						shadowColor: '#87cefa',
+						areaColor: '#fff',
+						borderColor: '#1773c3',
+						shadowColor: '#1773c3',
 						shadowBlur: 20
 					}
 				}
@@ -597,12 +602,19 @@
 					type: 'map',
 					mapType: 'china',
 					roam: false,
+					showLegendSymbol: false, // 存在legend时显示
 					label: {
 						normal: {
 							show: false
 						},
 						emphasis: {
 							show: true
+						}
+					},
+					itemStyle: {
+						normal: {},
+						emphasis: {
+							areaColor: 'rgba(80, 192, 100, 0.85)'
 						}
 					},
 					data: [{
@@ -733,9 +745,9 @@
 				}, {
 					type: 'map',
 					map: 'china',
-					geoIndex: 1,
+					geoIndex: 0,
 					aspectScale: 0.75, // 长宽比
-					showLegendSymbol: true, // 存在legend时显示
+					showLegendSymbol: false, // 存在legend时显示
 					label: {
 						normal: {
 							show: false,
@@ -750,7 +762,7 @@
 							borderWidth: 1
 						},
 						emphasis: {
-							areaColor: '#white'
+							areaColor: 'rgba(80, 192, 100, 0.75)'
 						}
 					},
 				},
@@ -776,8 +788,7 @@
 						normal: {
 							color: 'white'
 						},
-						emphasis: {
-						}
+						emphasis: {}
 					}
 				}, {
 					name: '前6',
@@ -798,7 +809,7 @@
 						normal: {
 							formatter: '{b}',
 							position: 'top',
-							show: true,
+							show: false,
 							color: 'black'
 						}
 					},
@@ -806,8 +817,7 @@
 						normal: {
 							color: 'white'
 						},
-						emphasis: {
-						}
+						emphasis: {}
 					},
 					zlevel: 1
 				}

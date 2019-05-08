@@ -45,13 +45,13 @@
 				},
 				legend: {
 					data: ['不在医学院所在城市', '在医学院所在城市', '附属医院', ]
-				},
+				},/*
 				grid: {
 					left: '4%',
 					right: '4%',
 					bottom: '3%',
 					containLabel: true
-				},
+				},*/
 				xAxis: {
 					type: 'value'
 				},
@@ -71,6 +71,11 @@
 							emphasis: {
 								show: true,
 								position: 'insideRight'
+							}
+						},
+						itemStyle: {
+							normal: {
+								color: 'rgba(26, 111, 138, 1)'
 							}
 						},
 						animationDelay: function(idx) {
@@ -93,8 +98,13 @@
 								position: 'insideRight'
 							}
 						},
+						itemStyle: {
+							normal: {
+								color: 'rgba(103, 157, 239, 1)'
+							}
+						},
 						animationDelay: function(idx) {
-							return idx * 10 + 3000;
+							return idx * 10 + 1000;
 						},
 						zlevel: 2,
 						data: [0, 0.14, 0.25, 0.31, 0.2, 0.2, 0.3, 0.33, 0.36, 0.4, 0.33, 0.25, 0.3, 0.2, 0.35, 0.44, 0.35, 0.6, 0.3, 0.57, 0.42, 0.25, 0.6, 0.6, 0.45, 0.2, 0.54, 0.55, 0.67, 0.76, 0.87]
@@ -113,8 +123,13 @@
 								position: 'insideRight'
 							}
 						},
+						itemStyle: {
+							normal: {
+								color: 'rgba(185, 208, 253, 1)'
+							}
+						},
 						animationDelay: function(idx) {
-							return idx * 10 + 6000;
+							return idx * 10 + 2000;
 						},
 						zlevel: 1,
 						data: [0, 0.2, 0.15, 0.16, 0.3, 0.3, 0.2, 0.17, 0.16, 0.13, 0.23, 0.33, 0.28, 0.4, 0.25, 0.2, 0.3, 0.08, 0.4, 0.15, 0.31, 0.5, 0.19, 0.2, 0.4, 0.8, 0.46, 0.45, 0.33, 0.24, 0.13, ]
