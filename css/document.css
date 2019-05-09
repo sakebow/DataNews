@@ -127,8 +127,9 @@
 
 .doc-content-sub-title {
 	background-color: lightblue;
-	color: white;
+	color: rgba(5, 82, 139, 1);
 	text-indent: 0;
+	font-weight: bold;
 }
 
 .doc-content-quote {
@@ -293,8 +294,8 @@
 	}
 	/* 文档正文部分 */
 	.doc-content p {
-		padding: 1%;
-		font-size: 1.15em;
+		padding: 0.5% 1%;
+		font-size: 0.95em;
 	}
 	.doc-images-frame,
 	.doc-images-frame figure {

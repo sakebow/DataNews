@@ -7,6 +7,7 @@
 
 .main-body {
 	width: 100%;
+	/*background-color: rgba(176, 216, 235, 0.25);*/
 }
 
 .iframe-frame {
@@ -170,7 +171,7 @@
 
 .container {
 	width: 100%;
-	background-color: white;
+	background-color: rgba(176, 216, 235, 0.25);
 	display: flex;
 	display: -webkit-flex;
 	justify-content: space-between;
@@ -195,9 +196,10 @@
 
 .footer {
 	text-indent: 0;
-	padding-top: 15%;
-	width: 95%;
+	margin-top: 100px;
+	width: 100%;
 	text-align: center;
+	background-color: rgba(200, 200, 200, 0.3);
 }
 .footer-header {
 	text-indent: 0;
@@ -210,7 +212,7 @@
 	text-indent: 0;
 	width: 100%;
 	line-height: 1.5em;
-	padding: 0;
+	padding: 0 0 3% 0;
 	font-size: 0.8em;
 }
 
@@ -401,8 +403,8 @@
 		font-size: 120%;
 	}
 	.container {
-		width: 99.5%;
-		padding: 0.8% 0;
+		width: 100%;
+		padding: 0;
 	}
 	/* 主体部分 */
 	.pay {

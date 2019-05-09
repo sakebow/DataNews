@@ -9,21 +9,32 @@
 	<body style="height: 100%; margin: 0">
 		<div id="container" style="height: 100%"></div>
 		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
-       <!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-       <script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<!--<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>-->
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+		<script type="text/javascript" src="https://echarts.baidu.com/gallery/vendors/simplex.js"></script>
 		<script type="text/javascript">
 			var dom = document.getElementById("container");
 			var myChart = echarts.init(dom);
 			var app = {};
 			app.title = '正负条形图';
-			
+
 			option = {
+				title: {
+					text: '注： 全国三甲医院总量 / 全国GDP总量 × 1000 = 0.77',
+					//  subtext: 'Show Data',
+					left: 'center',
+					top: 'bottom',
+					textStyle: {
+						color: '#000',
+						fontSize: '10px'
+					},
+					show: true
+				},
 				tooltip: {
 					trigger: 'axis',
 					axisPointer: { // 坐标轴指示器，坐标轴触发有效
@@ -71,8 +82,8 @@
 								];
 								return colorList[params.dataIndex]*/
 								let color;
-								if (params.data < 0.77) {
-                    				color = 'rgba(36, 73, 159, 1)';
+								if(params.data < 0.77) {
+									color = 'rgba(36, 73, 159, 1)';
 								} else {
 									color = 'lightblue';
 								}
